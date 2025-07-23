@@ -3,133 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>고양이 소개</title>
-  <link href="https://fonts.googleapis.com/css2?family=Dongle&display=swap" rel="stylesheet">
-  <style>
-    body {
-      font-family: 'Dongle', sans-serif;
-      margin: 0;
-      padding: 0;
-      background: url('media/back.jpg') no-repeat center center fixed;
-      background-size: cover;
-      color: #333;
-      font-weight: bold;
-      font-size: 40px;
-    }
-
-    .content-wrapper {
-      background-color: rgba(255, 255, 255, 0.5);
-      min-height: 100vh;
-      padding: 0;
-    }
-
-    header {
-      background-color: #d0c05c;
-      color: white;
-      padding: 30px 0;
-      text-align: center;
-      font-size: 80px;
-    }
-
-    nav {
-      background-color: #f3e5f5;
-      padding: 10px 0;
-      text-align: center;
-    }
-
-    nav ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-
-    nav ul li {
-      display: inline;
-      margin: 0 15px;
-    }
-
-    nav ul li a {
-      text-decoration: none;
-      color: #4a148c;
-      font-weight: bold;
-      font-size: 48px;
-    }
-
-    main {
-      max-width: 800px;
-      margin: 40px auto;
-      padding: 0 20px;
-      background-color: transparent;
-    }
-
-    section {
-      margin-bottom: 40px;
-      background-color: transparent;
-    }
-
-    h2 {
-      border-bottom: none;
-      padding-bottom: 10px;
-      color: #6a1b9a;
-      font-size: 64px;
-    }
-
-    section#intro p {
-      color: #6c198f;
-      font-size: 48px;
-    }
-
-    table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 10px;
-    }
-
-    table, th, td {
-      border: none;
-      color: #78109e;
-      padding: 10px;
-      text-align: center;
-      font-size: 48px;
-    }
-
-    footer {
-      background-color: transparent;
-      text-align: center;
-      padding: 30px 10px;
-      margin-top: 60px;
-      font-size: 52px;
-    }
-
-    textarea {
-      width: 90%;
-      padding: 10px;
-      margin-top: 10px;
-      border-radius: 6px;
-      border: 1px solid #ccc;
-      resize: vertical;
-      font-family: 'Dongle', sans-serif;
-      font-size: 40px;
-    }
-
-    button {
-      margin-top: 10px;
-      padding: 8px 16px;
-      background-color: #6a1b9a;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      font-size: 40px;
-    }
-
-    button:hover {
-      background-color: #4a148c;
-    }
-
-    audio {
-      margin-top: 20px;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -137,7 +11,7 @@
 
     <header>
       <h1>
-        <img src="media/logo.png" alt="고양이 로고" style="height: 120px; vertical-align: middle; margin-right: 10px;">
+<img src="media/logo.png" alt="고양이 로고" class="logo-img">
         고양이란 무엇인가
       </h1>
     </header>
@@ -151,8 +25,7 @@
     </nav>
 
     <main>
-
-      <section id="intro" style="margin-bottom: 120px;">
+      <section id="intro">
         <h2>고양이란?</h2>
         <p>냐옹 소리를 내며 울며 사람을 홀리는 동물. 반응 속도가 매우 빠름. 대체로 주인을 집사로 여김.</p>
       </section>
@@ -160,7 +33,6 @@
       <section id="breeds">
         <h2>대표적인 고양이 품종</h2>
         <table>
-
           <tbody>
             <tr>
               <td>삼색이</td>
@@ -177,18 +49,40 @@
           </tbody>
         </table>
       </section>
-
-    </main>
-
-    <footer id="contact">
+      <section id="video">
       <h2>고양이 영상</h2>
-      <video autoplay muted loop playsinline style="max-width: 50%; height: auto;">
+      <video autoplay muted loop playsinline>
         <source src="media/cat-video.mp4" type="video/mp4">
         브라우저가 비디오를 지원하지 않습니다.
       </video>
-    </footer>
+      </section>
 
+  <section class="meow-cell"></section>
+  <section class="meow-cell"></section>
+  <section class="meow-cell"></section>
+    
+  </main>
+
+    <footer>
+      <a href="https://namu.wiki/w/%EA%B3%A0%EC%96%91%EC%9D%B4" target="_blank">
+        더 알아보기
+      </a>
+    </footer>
   </div>
 
 </body>
 </html>
+
+<script>
+  function moveMeow() {
+    const cells = document.querySelectorAll('.meow-cell');
+    // 모든 cell 비우기
+    cells.forEach(cell => cell.innerHTML = '');
+
+    // 랜덤 위치 선택
+    const randomIndex = Math.floor(Math.random() * cells.length);
+    cells[randomIndex].innerHTML = '<span class="meow" onclick="moveMeow()">냐옹(나 잡아봐라)</span>';
+  }
+
+  window.onload = moveMeow;
+</script>
