@@ -70,19 +70,45 @@
     </footer>
   </div>
 
+    <div id="giant-cat" style="display: none;"></div>
+
 </body>
 </html>
 
 <script>
-  function moveMeow() {
-    const cells = document.querySelectorAll('.meow-cell');
-    // 모든 cell 비우기
-    cells.forEach(cell => cell.innerHTML = '');
+let clickCount = 0;
 
-    // 랜덤 위치 선택
-    const randomIndex = Math.floor(Math.random() * cells.length);
-    cells[randomIndex].innerHTML = '<span class="meow" onclick="moveMeow()">냐옹(나 잡아봐라)</span>';
-  }
+function moveMeow() {
+  const cells = document.querySelectorAll('.meow-cell');
+  cells.forEach(cell => cell.innerHTML = '');
 
-  window.onload = moveMeow;
+  const randomIndex = Math.floor(Math.random() * cells.length);
+  const span = document.createElement('span');
+  span.className = 'meow';
+  span.textContent = '냐옹(나 잡아봐라)';
+  span.onclick = () => {
+    clickCount++;
+    if (clickCount >= 5) {
+      showGiantCat();
+    } else {
+      moveMeow();
+    }
+  };
+  cells[randomIndex].appendChild(span);
+}
+
+function showGiantCat() {
+  const giantCat = document.getElementById('giant-cat');
+  giantCat.style.display = 'block';
+
+  // body 자체 배경 없애기
+  document.body.style.background = 'black';
+
+  // 다른 내용 완전 숨기기
+  document.querySelector('.content-wrapper').style.display = 'none';
+}
+
+
+window.onload = moveMeow;
+
 </script>

@@ -123,3 +123,15 @@ footer a {
   color: #6a1b9a;
   font-weight: bold;
 }
+
+#giant-cat {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  background-image: url('media/logo.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  z-index: 99999;
+}
